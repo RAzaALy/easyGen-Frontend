@@ -37,13 +37,12 @@ const configureStore = <
   ...configureStoreProps
 }: ConfigureStoreProps<S, A, M, E>) => {
   const rootMiddlewares = [...middleware];
-
-  // create the saga middleware
-  const sagaMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware(); // Define sagaMiddleware type
 
   if (sagaActionWatcher) {
-    // rootMiddlewares.push(sagaMiddleware);
+    rootMiddlewares.push(sagaMiddleware as Middleware<object, S, Dispatch<A>>); // Type assertion for sagaMiddleware
   }
+
 
   const store: EnhancedStore<S, A, Middleware<object, S, Dispatch<A>>[], E> = createStore({
     ...configureStoreProps,
