@@ -42,7 +42,7 @@ const configureStore = <
   const sagaMiddleware = createSagaMiddleware();
 
   if (sagaActionWatcher) {
-    rootMiddlewares.push(sagaMiddleware);
+    // rootMiddlewares.push(sagaMiddleware);
   }
 
   const store: EnhancedStore<S, A, Middleware<object, S, Dispatch<A>>[], E> = createStore({
